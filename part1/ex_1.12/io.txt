@@ -1,0 +1,44 @@
+# Tags
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker tag 46a6409cfe7b backend
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker tag 03ca9d0db1c6 frontend      
+
+# Build and start backend
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.12
+ % docker build . -f Dockerfile_back
+Sending build context to Docker daemon  3.072kB
+Step 1/2 : FROM backend
+ ---> 46a6409cfe7b
+Step 2/2 : CMD FRONT_URL="http://localhost:5000" npm start
+ ---> Running in cf1138d02ce4
+Removing intermediate container cf1138d02ce4
+ ---> 125ee2221abc
+Successfully built 125ee2221abc
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.12
+ % docker run -p 8000:8000 125ee2221abc
+
+# Another tab, build and start frontend
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.12
+ % docker build . -f Dockerfile_front  
+Sending build context to Docker daemon  2.048kB
+Step 1/2 : FROM frontend
+ ---> 03ca9d0db1c6
+Step 2/2 : CMD API_URL="http://localhost:8000" npm start
+ ---> Running in 1ad6e3f28264
+Removing intermediate container 1ad6e3f28264
+ ---> 4d1c1e7d9078
+Successfully built 4d1c1e7d9078
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.12
+ % docker run -p 5000:5000 4d1c1e7d9078
+
+> frontend-example-docker@1.0.0 start /app
+> webpack --mode production && serve -s -l 5000 dist
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+Browserslist: caniuse-lite is outdated. Please run next command `npm update`
+Hash: 098d8a2e9d02d5c79018
+
+# -> It just works!
+
