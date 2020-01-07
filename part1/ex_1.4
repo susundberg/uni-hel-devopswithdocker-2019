@@ -1,0 +1,19 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps
+CONTAINER ID        IMAGE                               COMMAND             CREATED             STATUS              PORTS               NAMES
+5131700c5482        devopsdockeruh/exec_bash_exercise   "node index"        2 seconds ago       Up 1 second                             youthful_hertz
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker exec -it 5131700c5482 bash
+root@5131700c5482:/usr/app# ls
+Dockerfile  README.md  index.js  logs.txt
+root@5131700c5482:/usr/app# cat logs.txt 
+Tue, 07 Jan 2020 07:42:01 GMT
+Tue, 07 Jan 2020 07:42:04 GMT
+Tue, 07 Jan 2020 07:42:07 GMT
+Tue, 07 Jan 2020 07:42:10 GMT
+Secret message is:
+"Docker is easy"
+Tue, 07 Jan 2020 07:42:16 GMT
+root@5131700c5482:/usr/app# 
+
+

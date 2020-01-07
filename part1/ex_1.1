@@ -1,0 +1,36 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps -a             
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+ee038fb55fb9        nginx               "nginx -g 'daemon of…"   10 seconds ago      Up 3 seconds        80/tcp              zen_lalande
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker run -d --rm nginx 
+2a7ade16f3153a63d9efaa8210394dbff8e8ef9ecaea5ed5a886f011116c45e8
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker run -d --rm nginx 
+9b234bd335f2aac6d90c66d57099ec41611b145495f46230f81f23b01231ac1c
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps -a             
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+9b234bd335f2        nginx               "nginx -g 'daemon of…"   2 seconds ago       Up 1 second         80/tcp              lucid_keldysh
+2a7ade16f315        nginx               "nginx -g 'daemon of…"   6 seconds ago       Up 4 seconds        80/tcp              silly_jennings
+ee038fb55fb9        nginx               "nginx -g 'daemon of…"   17 seconds ago      Up 10 seconds       80/tcp              zen_lalande
+
+
+
+Then shut down
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker kill 9b234bd335f2
+9b234bd335f2
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker kill 2a7ade16f315
+2a7ade16f315
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+ee038fb55fb9        nginx               "nginx -g 'daemon of…"   45 seconds ago      Up 39 seconds       80/tcp              zen_lalande
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % 
+
+
+

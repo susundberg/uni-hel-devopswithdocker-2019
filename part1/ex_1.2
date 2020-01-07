@@ -1,0 +1,33 @@
+ % docker images
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+nginx                                  latest              f7bb5701a33c        9 days ago          126MB
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS               NAMES
+ee038fb55fb9        nginx               "nginx -g 'daemon of…"   About a minute ago   Up About a minute   80/tcp              zen_lalande
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+
+
+Then clean
+ % docker kill ee038fb55fb9
+ee038fb55fb9
+ % docker rmi nginx:latest 
+Untagged: nginx:latest
+Untagged: nginx@sha256:b2d89d0a210398b4d1120b3e3a7672c16a4ba09c2c4a0395f18b9f7999b768f2
+Deleted: sha256:f7bb5701a33c0e572ed06ca554edca1bee96cbbc1f76f3b01c985de7e19d0657
+Deleted: sha256:8f1984cf0de0461043fcabd6b2a2040325ac001d9897a242e0d80486fe71575e
+Deleted: sha256:59d91a36ba4b720eadfbf346ddb825c2faa2d66cc7a915238eaf926c4b4b40ee
+Deleted: sha256:556c5fb0d91b726083a8ce42e2faaed99f11bc68d3f70e2c7bbce87e7e0b3e10
+
+
+Prove clean:
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker images                                     
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+ % docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1
+
+
