@@ -4,3 +4,6 @@
 [submodule "part1/ex_1.11/backend-example-docker"]
 	path = part1/ex_1.11/backend-example-docker
 	url = https://github.com/docker-hy/backend-example-docker.git
+[submodule "part1/ex_1.13/spring-example-project"]
+	path = part1/ex_1.13/spring-example-project
+	url = https://github.com/docker-hy/spring-example-project.git
