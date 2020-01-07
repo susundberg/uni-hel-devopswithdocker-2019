@@ -1,0 +1,20 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.6
+ % docker build .         
+Sending build context to Docker daemon  2.048kB
+Step 1/2 : FROM devopsdockeruh/overwrite_cmd_exercise
+ ---> 3d2b622b1849
+Step 2/2 : CMD ["-c","1"]
+ ---> Running in 48a57c39f0c6
+Removing intermediate container 48a57c39f0c6
+ ---> b810d478e95c
+Successfully built b810d478e95c
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.6
+ % docker run b810d478e95c
+2
+3
+4
+5
+6
+7
+
+
