@@ -1,0 +1,12 @@
+
+The docker image is published at: https://hub.docker.com/r/supauli/uni-hel-devopswithdocker-2019-part1-1-17
+
+
+My favorite programming enviroment is python3. I usually prefer installing packages from the package manager over the pip - since in that case someone is taking care of possible native dependencies and even possibly security updates.
+ 
+I have used the base image of ubuntu-18.04 that is currently the latest stable -- and i prefer stables for the app development unless there is very specific reason why not. 
+
+The dockers image could be used in development by mounting local source directory inside the container, and the container could run in "entr" mode (run whenever file is edited) flake8 + unittests.
+
+ 
+
