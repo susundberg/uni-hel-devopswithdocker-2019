@@ -1,0 +1,15 @@
+This is also part of another course.
+
+Github page for the source code/project: https://github.com/susundberg/uni-hel-cyber-project-1-2019
+
+Docker hub page: https://hub.docker.com/r/supauli/uni-hel-cyber-project-1-2019
+
+
+Running it:
+docker run -d --rm -p 8080:8080 supauli/uni-hel-cyber-project-1-2019:v1
+
+(and check the browser -- try sql injection for login ;)
+
+
+
+

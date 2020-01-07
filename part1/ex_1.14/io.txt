@@ -1,0 +1,174 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.14
+ % docker build . 
+Sending build context to Docker daemon    148kB
+Step 1/8 : FROM ruby:2.6.0
+ ---> ef8778f370d5
+Step 2/8 : ADD rails-example-project /app
+ ---> Using cache
+ ---> e56472562ba3
+Step 3/8 : WORKDIR /app
+ ---> Using cache
+ ---> 853bc91323f7
+Step 4/8 : EXPOSE 3000/tcp
+ ---> Using cache
+ ---> f435acd89de3
+Step 5/8 : RUN bundle install
+ ---> Using cache
+ ---> 4de648370d47
+Step 6/8 : RUN apt-get update && apt-get install -y nodejs
+ ---> Running in b8329cc5f1ce
+Ign:1 http://deb.debian.org/debian stretch InRelease
+Get:2 http://security.debian.org/debian-security stretch/updates InRelease [94.3 kB]
+Get:3 http://deb.debian.org/debian stretch-updates InRelease [91.0 kB]
+Get:4 http://deb.debian.org/debian stretch Release [118 kB]
+Get:5 http://deb.debian.org/debian stretch Release.gpg [2365 B]
+Get:6 http://security.debian.org/debian-security stretch/updates/main amd64 Packages [513 kB]
+Get:7 http://deb.debian.org/debian stretch-updates/main amd64 Packages [27.9 kB]
+Get:8 http://deb.debian.org/debian stretch/main amd64 Packages [7086 kB]
+Fetched 7932 kB in 2s (2874 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  libuv1
+The following NEW packages will be installed:
+  libuv1 nodejs
+0 upgraded, 2 newly installed, 0 to remove and 82 not upgraded.
+Need to get 3524 kB of archives.
+After this operation, 14.5 MB of additional disk space will be used.
+Get:1 http://deb.debian.org/debian stretch/main amd64 libuv1 amd64 1.9.1-3 [84.4 kB]
+Get:2 http://deb.debian.org/debian stretch/main amd64 nodejs amd64 4.8.2~dfsg-1 [3440 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 3524 kB in 0s (4854 kB/s)
+Selecting previously unselected package libuv1:amd64.
+(Reading database ... 29688 files and directories currently installed.)
+Preparing to unpack .../libuv1_1.9.1-3_amd64.deb ...
+Unpacking libuv1:amd64 (1.9.1-3) ...
+Selecting previously unselected package nodejs.
+Preparing to unpack .../nodejs_4.8.2~dfsg-1_amd64.deb ...
+Unpacking nodejs (4.8.2~dfsg-1) ...
+Setting up libuv1:amd64 (1.9.1-3) ...
+Processing triggers for libc-bin (2.24-11+deb9u3) ...
+Setting up nodejs (4.8.2~dfsg-1) ...
+update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) in auto mode
+Removing intermediate container b8329cc5f1ce
+ ---> ceac9b9de2cf
+Step 7/8 : RUN rails db:migrate
+ ---> Running in 1b602452ea91
+== 20190314120316 CreatePresses: migrating ====================================
+-- create_table(:presses)
+   -> 0.0006s
+== 20190314120316 CreatePresses: migrated (0.0007s) ===========================
+
+Removing intermediate container 1b602452ea91
+ ---> ec4f1cfb23a2
+Step 8/8 : CMD rails s
+ ---> Running in 5912ea108936
+Removing intermediate container 5912ea108936
+ ---> add886a8ac94
+Successfully built add886a8ac94
+
+
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.14
+ % docker run -p 3000:3000 add886a8ac94
+=> Booting Puma
+=> Rails 5.2.2.1 application starting in development 
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.12.0 (ruby 2.6.0-p0), codename: Llamas in Pajamas
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+Started GET "/" for 172.17.0.1 at 2020-01-07 09:47:26 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+   (0.1ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+  ↳ /usr/local/bundle/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by PressesController#new as HTML
+   (0.2ms)  SELECT COUNT(*) FROM "presses"
+  ↳ app/controllers/presses_controller.rb:18
+  Rendering presses/new.html.erb within layouts/application
+  Rendered presses/_form.html.erb (1.2ms)
+  Rendered presses/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 582ms (Views: 567.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/presses" for 172.17.0.1 at 2020-01-07 09:47:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lMYWwFkmTR84OE9BcOBjXbCq8qPureooqQTp8SOX6BuhKAutDpnRgi3R8dQrrgOOz0qYfyPdBfZS31Ljvhf/Uw==", "commit"=>"Press"}
+   (0.1ms)  begin transaction
+  ↳ app/controllers/presses_controller.rb:31
+  Press Create (0.5ms)  INSERT INTO "presses" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2020-01-07 09:47:29.385468"], ["updated_at", "2020-01-07 09:47:29.385468"]]
+  ↳ app/controllers/presses_controller.rb:31
+   (12.3ms)  commit transaction
+  ↳ app/controllers/presses_controller.rb:31
+Redirected to http://localhost:3000/presses/new
+Completed 302 Found in 23ms (ActiveRecord: 12.9ms)
+
+
+Started GET "/presses/new" for 172.17.0.1 at 2020-01-07 09:47:29 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#new as HTML
+   (0.2ms)  SELECT COUNT(*) FROM "presses"
+  ↳ app/controllers/presses_controller.rb:18
+  Rendering presses/new.html.erb within layouts/application
+  Rendered presses/_form.html.erb (1.5ms)
+  Rendered presses/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/presses" for 172.17.0.1 at 2020-01-07 09:47:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A64J7w72wnLYNjw28hs0atcSGbJVCagxupZ0Ol6FmqA2QBSCWUle783fgqOpVVS5qPJzbph5R+9BTc8owwWN6A==", "commit"=>"Press"}
+   (0.2ms)  begin transaction
+  ↳ app/controllers/presses_controller.rb:31
+  Press Create (0.7ms)  INSERT INTO "presses" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2020-01-07 09:47:30.394410"], ["updated_at", "2020-01-07 09:47:30.394410"]]
+  ↳ app/controllers/presses_controller.rb:31
+   (12.3ms)  commit transaction
+  ↳ app/controllers/presses_controller.rb:31
+Redirected to http://localhost:3000/presses/new
+Completed 302 Found in 26ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/presses/new" for 172.17.0.1 at 2020-01-07 09:47:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#new as HTML
+   (0.6ms)  SELECT COUNT(*) FROM "presses"
+  ↳ app/controllers/presses_controller.rb:18
+  Rendering presses/new.html.erb within layouts/application
+  Rendered presses/_form.html.erb (1.3ms)
+  Rendered presses/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/presses" for 172.17.0.1 at 2020-01-07 09:47:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KIwyHaFOJ1yRi9wgHWGYjImu2evT+bO09wQCFpZQLUIdYi9w9vG7wYRiYrVGL/hf9k6zNx6JXGoM37kEC9A6Cg==", "commit"=>"Press"}
+   (0.2ms)  begin transaction
+  ↳ app/controllers/presses_controller.rb:31
+  Press Create (1.0ms)  INSERT INTO "presses" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2020-01-07 09:47:30.889180"], ["updated_at", "2020-01-07 09:47:30.889180"]]
+  ↳ app/controllers/presses_controller.rb:31
+   (11.9ms)  commit transaction
+  ↳ app/controllers/presses_controller.rb:31
+Redirected to http://localhost:3000/presses/new
+Completed 302 Found in 26ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/presses/new" for 172.17.0.1 at 2020-01-07 09:47:30 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by PressesController#new as HTML
+   (0.4ms)  SELECT COUNT(*) FROM "presses"
+  ↳ app/controllers/presses_controller.rb:18
+  Rendering presses/new.html.erb within layouts/application
+  Rendered presses/_form.html.erb (1.8ms)
+  Rendered presses/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 29ms (Views: 23.6ms | ActiveRecord: 0.4ms)
+
+
+
+

@@ -7,3 +7,6 @@
 [submodule "part1/ex_1.13/spring-example-project"]
 	path = part1/ex_1.13/spring-example-project
 	url = https://github.com/docker-hy/spring-example-project.git
+[submodule "part1/ex_1.14/rails-example-project"]
+	path = part1/ex_1.14/rails-example-project
+	url = https://github.com/docker-hy/rails-example-project.git
