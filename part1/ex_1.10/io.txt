@@ -1,0 +1,164 @@
+% docker build .                      
+Sending build context to Docker daemon  631.3kB
+Step 1/7 : FROM node:10
+ ---> ea119cebc1c3
+Step 2/7 : ADD frontend-example-docker /app
+ ---> 875720a2ea4e
+Step 3/7 : WORKDIR /app
+ ---> Running in 4ffe9db5250a
+Removing intermediate container 4ffe9db5250a
+ ---> 9b8b809c87b8
+Step 4/7 : RUN npm install
+ ---> Running in 57e76100ab87
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.7 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.7: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})                                                                                                                             
+
+added 1029 packages from 415 contributors and audited 11636 packages in 25.596s
+found 313 vulnerabilities (6 moderate, 307 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 57e76100ab87
+ ---> 095cde732f69
+Step 5/7 : RUN npm run build
+ ---> Running in 987a013a897e
+
+> frontend-example-docker@1.0.0 build /app
+> webpack --mode production
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+Browserslist: caniuse-lite is outdated. Please run next command `npm update`                                                                   
+Hash: 24b8becdc440237275de
+Version: webpack 4.29.6
+Time: 31361ms
+Built at: 01/07/2020 8:56:15 AM
+                                 Asset       Size  Chunks                    Chunk Names
+0ab54153eeeca0ce03978cc463b257f7.woff2   39.2 KiB          [emitted]         
+  13db00b7a34fee4d819ab7f9838cc428.eot   96.3 KiB          [emitted]         
+  701ae6abd4719e9c2ada3535a497b341.eot   30.4 KiB          [emitted]         
+  82f60bd0b94a1ed68b1e6e309ce2e8c3.svg    105 KiB          [emitted]         
+  8e3c7f5520f5ae906c6cf6d7f3ddcd19.eot    104 KiB          [emitted]         
+  962a1bf31c081691065fe333d9fa8105.svg    382 KiB          [emitted]  [big]  
+  9c74e172f87984c48ddf5c8108cabe67.png   27.5 KiB          [emitted]         
+ a046592bac8f2fd96e994733faf3858c.woff   62.2 KiB          [emitted]         
+  a1a749e89f578a49306ec2b055c073da.svg    496 KiB          [emitted]  [big]  
+  a3e2211dddcba197b5bbf2aa9d5d9a9a.svg   3.19 KiB          [emitted]         
+  ad97afd3337e8cda302d10ff5a4026b8.ttf   30.2 KiB          [emitted]         
+  b87b9ba532ace76ae9f6edfe9f72ded2.ttf    103 KiB          [emitted]         
+  bff6c47a9da5c7cfa2e8a552e2df3a78.svg    3.2 KiB          [emitted]         
+  c5ebe0b32dc1b5cc449a76c4204d13bb.ttf   96.1 KiB          [emitted]         
+cd6c777f1945164224dee082abaea03a.woff2     12 KiB          [emitted]         
+e8c322de9658cbeb8a774b6624167c2c.woff2   53.2 KiB          [emitted]         
+ ef60a4f6c25ef7f39f2d25a748dbecfe.woff   14.4 KiB          [emitted]         
+ faff92145777a3cbaf8e7367b4807987.woff   49.3 KiB          [emitted]         
+                            index.html  454 bytes          [emitted]         
+                              main.css  127 bytes       0  [emitted]         main
+                               main.js   19.1 KiB       0  [emitted]         main
+                    vendors~main-1.css    602 KiB       1  [emitted]  [big]  vendors~main
+                       vendors~main.js    328 KiB       1  [emitted]  [big]  vendors~main
+Entrypoint main [big] = vendors~main-1.css vendors~main.js main.css main.js
+  [7] ./node_modules/semantic-ui-react/dist/es/lib/index.js + 1 modules 2.94 KiB {1} [built]
+      |    2 modules
+ [51] ./node_modules/semantic-ui-react/dist/es/elements/Icon/Icon.js + 1 modules 6.22 KiB {1} [built]
+      |    2 modules
+ [80] ./node_modules/react-redux/es/index.js + 19 modules 36.2 KiB {1} [built]
+      |    20 modules
+ [93] ./node_modules/semantic-ui-react/dist/es/elements/Label/Label.js + 2 modules 10.6 KiB {1} [built]
+      |    3 modules
+ [94] (webpack)/buildin/global.js 472 bytes {1} [built]
+[246] ./src/assets/toscalogo_color.svg 82 bytes {0} [built]
+[247] ./src/assets/toscalogo_grayscale.svg 82 bytes {0} [built]
+[266] multi @babel/polyfill ./src 40 bytes {0} [built]
+[446] (webpack)/buildin/harmony-module.js 573 bytes {1} [built]
+[448] ./src/assets/custom.css 39 bytes {0} [built]
+[585] ./src/index.js + 18 modules 37.8 KiB {0} [built]
+      | ./src/index.js 569 bytes [built]
+      | ./src/util/store.js 481 bytes [built]
+      | ./util/common.js 117 bytes [built]
+      | ./src/util/apiConnection.js 4.7 KiB [built]
+      | ./src/util/redux/index.js 219 bytes [built]
+      | ./src/util/redux/messageReducer.js 1.76 KiB [built]
+      | ./src/util/redux/simpleReducer.js 1.47 KiB [built]
+      | ./src/util/common.js 221 bytes [built]
+      |     + 11 hidden modules
+[586] ./node_modules/semantic-ui-react/dist/es/elements/Button/Button.js + 3 modules 17.7 KiB {1} [built]
+      |    4 modules
+[594] ./node_modules/react-router-dom/es/BrowserRouter.js + 12 modules 41 KiB {1} [built]
+      |    13 modules
+[596] ./node_modules/react-router-dom/es/Switch.js + 1 modules 3.35 KiB {1} [built]
+      |    2 modules
+[597] ./node_modules/react-router-dom/es/Route.js + 1 modules 5.9 KiB {1} [built]
+      |    2 modules
+    + 971 hidden modules
+
+WARNING in asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+This can impact web performance.
+Assets: 
+  962a1bf31c081691065fe333d9fa8105.svg (382 KiB)
+  a1a749e89f578a49306ec2b055c073da.svg (496 KiB)
+  vendors~main-1.css (602 KiB)
+  vendors~main.js (328 KiB)
+
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+Entrypoints:
+  main (949 KiB)
+      vendors~main-1.css
+      vendors~main.js
+      main.css
+      main.js
+
+
+WARNING in webpack performance recommendations: 
+You can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.
+For more info visit https://webpack.js.org/guides/code-splitting/
+Child html-webpack-plugin for "index.html":
+     1 asset
+    Entrypoint undefined = index.html
+    [2] (webpack)/buildin/global.js 472 bytes {0} [built]
+    [3] (webpack)/buildin/module.js 497 bytes {0} [built]
+        + 2 hidden modules
+Child mini-css-extract-plugin node_modules/css-loader/index.js!node_modules/semantic-ui-css/semantic.min.css:
+    Entrypoint mini-css-extract-plugin = *
+       19 modules
+Child mini-css-extract-plugin node_modules/css-loader/index.js!src/assets/custom.css:
+    Entrypoint mini-css-extract-plugin = *
+    [0] ./node_modules/css-loader!./src/assets/custom.css 340 bytes {0} [built]
+        + 1 hidden module
+Removing intermediate container 987a013a897e
+ ---> d05dd180eb37
+Step 6/7 : EXPOSE 5000
+ ---> Running in f5b478cf7f1c
+Removing intermediate container f5b478cf7f1c
+ ---> 5b4bbdc40b0a
+Step 7/7 : CMD ["npm","start"]
+ ---> Running in ab8516976e2a
+Removing intermediate container ab8516976e2a
+ ---> 03ca9d0db1c6
+Successfully built 03ca9d0db1c6
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.10
+
+
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.10
+docker run -it -p 5000:5000 03ca9d0db1c6
+
+
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.10
+ % curl localhost:5000
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>Webpack App</title>
+    <link href="vendors~main-1.css" rel="stylesheet" />
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root">
+    </div>
+    <script src="vendors~main.js" type="text/javascript"></script>
+    <script src="main.js" type="text/javascript"></script>
+  </body>
+</html>
+
+

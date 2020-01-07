@@ -1,0 +1,3 @@
+[submodule "part1/ex_1.10/part1/ex_1.10/frontend-example-docker"]
+	path = part1/ex_1.10/part1/ex_1.10/frontend-example-docker
+	url = https://github.com/docker-hy/frontend-example-docker.git
