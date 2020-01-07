@@ -1,0 +1,33 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.7
+ % docker build .             
+Sending build context to Docker daemon  3.072kB
+Step 1/4 : FROM ubuntu:18.04
+ ---> 549b9b86cb8d
+Step 2/4 : RUN apt-get update && apt-get install -y curl
+ ---> Using cache
+ ---> dab5b340d888
+Step 3/4 : ADD start.sh /root/start.sh
+ ---> Using cache
+ ---> b508c1f37e12
+Step 4/4 : CMD ["/root/start.sh"]
+ ---> Using cache
+ ---> a1702e879d4f
+Successfully built a1702e879d4f
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.7
+ % docker tag a1702e879d4f curler
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.7
+ % docker run -it curler
+Input website:
+helsinki.fi
+Searching..
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.7
+ % 
+
+
