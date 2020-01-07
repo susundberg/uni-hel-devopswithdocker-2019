@@ -1,0 +1,71 @@
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % docker build .             
+Sending build context to Docker daemon    234kB
+Step 1/6 : FROM node:10
+ ---> ea119cebc1c3
+Step 2/6 : ADD backend-example-docker /app
+ ---> 9dab8c18c858
+Step 3/6 : WORKDIR /app
+ ---> Running in 3438dafa4950
+Removing intermediate container 3438dafa4950
+ ---> da1bba79b199
+Step 4/6 : RUN npm install
+ ---> Running in 3f0511d59363
+
+> nodemon@1.18.9 postinstall /app/node_modules/nodemon
+> node bin/postinstall || exit 0
+
+Love nodemon? You can now support the project via the open collective:
+ > https://opencollective.com/nodemon/donate
+
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+
+added 606 packages from 458 contributors and audited 5317 packages in 13.987s
+found 273 vulnerabilities (1 moderate, 272 high)
+  run `npm audit fix` to fix them, or `npm audit` for details
+Removing intermediate container 3f0511d59363
+ ---> 59388e4d91d9
+Step 5/6 : EXPOSE 8000
+ ---> Running in 0370e24f5cc9
+Removing intermediate container 0370e24f5cc9
+ ---> 0b9ed9a783eb
+Step 6/6 : CMD ["npm","start"]
+ ---> Running in f639af7c4c4d
+Removing intermediate container f639af7c4c4d
+ ---> 46a6409cfe7b
+Successfully built 46a6409cfe7b
+
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % touch logs.txt
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+% docker run -p 8000:8000 -v $(pwd)/logs.txt:/app/logs.txt 46a6409cfe7b
+
+> backend-example-docker@1.0.0 start /app
+> cross-env NODE_ENV=production node index.js
+
+Browserslist: caniuse-lite is outdated. Please run next command `npm update caniuse-lite browserslist`
+Started on port 8000
+
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % curl localhost:8000
+Port configured correctly, generated message in logs.txt%   
+
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % cat logs.txt 
+1/7/2020, 9:08:40 AM: Connection received in root
+
+# Restart - check
+ % curl localhost:8000
+Port configured correctly, generated message in logs.txt%                                                                                      pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % cat logs.txt                                                         
+1/7/2020, 9:08:40 AM: Connection received in root
+1/7/2020, 9:09:51 AM: Connection received in root
+pauli@pauli-320S ~/STUDY/uni-hel-devopswithdocker-2019/part1/ex_1.11
+ % 
+
+
+
