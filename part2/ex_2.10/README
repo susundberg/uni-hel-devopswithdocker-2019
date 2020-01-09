@@ -1,0 +1,9 @@
+No modifications were made to ex-2.03 dockerfiles so omitting copying them.
+
+They can be found in the location ../ex_2.03/Dockerfile_back and ../ex_2.03/Dockerfile_front
+
+The ENVIROMENT variable change in docker-compose was enough (all buttons green).
+
+
+
+
