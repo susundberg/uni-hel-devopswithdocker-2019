@@ -1,0 +1,14 @@
+The resulting sizes are:
+
+yle_dl              v1                  2c993b0028d1        3 minutes ago       710MB
+yle_dl              v0                  a5ec38b171f3        9 minutes ago       756MB
+
+
+And compared to official docker file:
+taskinen/yle-dl     latest              b97796e41c16        5 months ago        311MB
+
+The difference is quite a much. The official seems to be using alpine with specific packages added.
+
+
+
+

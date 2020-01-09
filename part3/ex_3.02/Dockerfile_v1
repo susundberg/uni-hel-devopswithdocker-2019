@@ -1,0 +1,8 @@
+FROM ubuntu:18.04
+
+RUN apt-get update && \
+    apt-get install -y python3-pip  ffmpeg wget && \
+    pip3 install --no-cache-dir yle-dl && \
+    rm -rf /var/lib/apt/lists/* 
+
+
