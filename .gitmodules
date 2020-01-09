@@ -19,3 +19,9 @@
 [submodule "part2/ex_2.04/scaling-exercise"]
 	path = part2/ex_2.04/scaling-exercise
 	url = https://github.com/docker-hy/scaling-exercise.git
+[submodule "part3/ex_3.01/frontend-example-docker"]
+	path = part3/ex_3.01/frontend-example-docker
+	url = https://github.com/docker-hy/frontend-example-docker.git
+[submodule "part3/ex_3.01/backend-example-docker"]
+	path = part3/ex_3.01/backend-example-docker
+	url = https://github.com/docker-hy/backend-example-docker.git

@@ -1,0 +1,40 @@
+Backend:
+
+Version v0: 360MB
+ - no optimization
+ - based on ubuntu:16.04
+
+Version v1: 358MB
+ - Based on v0
+ - combining run operations
+
+Version v2: 332MB
+ - Based on V1
+ - Removing extra files
+
+
+
+
+Frontend:
+- Skpping the V1 for little change
+
+Version v0: 484MB
+ - Plain version, as above
+
+Version v2: 455MB
+ - Based on v0
+ - Combined runs
+ - Removed extra stuff
+
+
+
+Full output:
+ % docker images|grep "front\|back"
+front               v2                  fe6bc38b7743        2 minutes ago       455MB
+front               v0                  35e7b68895df        11 minutes ago      484MB
+backend             v2                  7b68f9471231        16 minutes ago      332MB
+backend             v1                  5c874810cea6        19 minutes ago      358MB
+backend             v0                  420e99cce565        24 minutes ago      360MB
+
+
+
