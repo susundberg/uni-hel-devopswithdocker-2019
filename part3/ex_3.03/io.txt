@@ -1,0 +1,4 @@
+docker build ../ex_3.01/ -f Dockerfile_front
+docker build ../ex_3.01/ -f Dockerfile_back
+
+
