@@ -1,0 +1,26 @@
+FROM node:10-alpine as build-stage
+
+EXPOSE 5000
+
+ADD frontend-example-docker /app
+
+RUN adduser -D app
+RUN chown -R app: /app
+USER app
+WORKDIR /app
+
+RUN npm install && npm run build
+
+
+
+FROM node:10-alpine
+RUN npm install -g serve 
+RUN adduser -D app
+
+COPY --from=build-stage /app/dist /app/dist
+RUN chown -R app: /app
+
+USER app
+WORKDIR /app
+
+CMD ["serve","-s","-l","5000","dist"]

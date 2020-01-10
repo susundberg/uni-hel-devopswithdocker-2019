@@ -1,0 +1,17 @@
+FROM node:10-alpine
+
+EXPOSE 8000
+
+ADD backend-example-docker /app
+
+
+RUN adduser -D app
+RUN chown -R app: /app
+
+USER app
+WORKDIR /app
+
+RUN npm install
+CMD ["npm","start"]
+
+

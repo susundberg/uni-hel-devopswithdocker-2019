@@ -1,0 +1,12 @@
+The dockerfiles at ../ex_3.03/Dockerfile_front and ../ex_3.04/Dockerfile_back are modified for using the node10-alpine version.
+
+Frontend:
+ - Image with ubuntu:16.04 with best optimization: 455MB
+ - With node:10-alpine: 263MB
+
+Backend:
+ - Image with ubuntu:16.04 with best optimization: 332MB
+ - With node:10-alpine:139MB
+
+And the dockerfiles are much cleaner without the node-10 installation hassle.
+
