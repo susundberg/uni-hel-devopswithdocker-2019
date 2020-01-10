@@ -1,0 +1,18 @@
+FROM python:3.6-alpine
+
+RUN pip3 --no-cache install requests 
+
+RUN adduser -D app
+
+ADD hackforum /hackforum
+RUN find /hackforum -iname "*.pyc" -exec rm -v {} \;
+RUN chown -R app: /hackforum 
+
+USER app
+
+EXPOSE 8080/tcp
+# RUN cd / && python3 /hackforum/tests/test_main.py 
+CMD ["python3", "/hackforum/main.py"]
+
+
+

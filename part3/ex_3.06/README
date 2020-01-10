@@ -1,0 +1,9 @@
+Changes:
+ * Move ubuntu:18.04 to python:3.6-alpine
+ * Remove temporary *.pyc
+ * Move to normal user
+
+
+Size changed:
+ 135MB -> 106MB
+
